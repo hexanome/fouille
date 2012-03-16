@@ -1,0 +1,62 @@
+%-------------------------------------------
+% En-tête type de document pour le projet PLD
+% Il suffit de remplir le input ligne 45
+%-------------------------------------------
+
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{ucs}
+% Reconnaitre les caratères accentués dans le source.
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[francais]{babel}
+% Insertion d'images
+\usepackage{graphicx}
+% Utilisation du symbole EURO
+\usepackage{eurosym}
+
+\setlength{\parskip}{10pt plus 1pt minus 1pt}
+
+\begin{document}
+
+%------------------------------------- Page de titre
+\begin{titlepage}
+~
+\vfill
+\begin{center}
+\begin{Huge}
+Projet Fouille de Données\\ Les communes de la région Rhône-Alpes \end{Huge}
+\vfill
+\\Quentin \bsc{Calvez}, Xavier \bsc{Sauvagnat}\\
+\vfill
+\begin{Large}
+Mars 2012
+\end{Large}
+\vfill
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+   Destinataire & Version & Etat & Dernière révision \\
+   \hline
+   Mr. Bouliquot & 1 & Validé & \today \\
+   \hline
+\end{tabular}
+\end{center}
+\vfill
+\end{titlepage}
+%----------------------------------------------------
+%--------------------------------- Table des matières
+\newpage
+\tableofcontents
+\newpage
+%----------------------------------------------------
+
+%------------------- Insertion du contenu du document
+\input{./rapport.tex}
+%----------------------------------------------------
+
+%-------------------
+
+%----------------------------------------------------
+\end{document}
