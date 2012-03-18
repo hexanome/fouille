@@ -1,6 +1,6 @@
 \section{Introduction}
 
-Nous allons dans ce document présenter notre analyse et traitement d'un jeu de données qui nous a été fournis, contenant des informations sur les 293 communes du département du Rône. Nous verrons tout d'abord en détails quelles sont les données que l'on nous a fournis, quelles autres informations nous avons pu leur adjoindre afin de faciliter leur analyse. On se concentrera ensuite sur la technique utilisée et les résultats que nous avons obtenus, étape par étape.
+Nous allons dans ce document présenter notre analyse et traitement d'un jeu de données qui nous a été fournis, contenant des informations sur les 293 communes du département du Rône. Nous verrons tout d'abord en détails quelles sont les données que l'on nous a fournis, quelles autres informations nous avons pu leur adjoindre afin de faciliter leur analyse puis on se concentrera ensuite sur la technique utilisée et les résultats que nous avons obtenus, étape par étape.
 
 \section{Jeux de données}
 
@@ -13,18 +13,18 @@ Le jeu de données qui nous était fournis nous a servi de base dans notre reche
 Afin de mieux visualiser le jeu original dans l'espace, nous lui avons adjoint les coordonnées GPS de chaque commune, nous permettant ainsi de placer sur une carte les communes et de pouvoir comparer leur emplacement avec d'autres de leurs caractéristiques.
 
 \subsection{Recensement INSEE}
-Bien qu'il soit indiqué dans les variables qu'il y est une estimation de la population en 2006, ces données sont absentes du jeu de base, nous avons donc rajouté des informations démographiques provenant d'un recensement de 2008 effectué par l'INSEE et qui nous permettent de connaître le nombre d'habitant total par commune, tout en ajoutant une nouvelle dimension qui est la classification de ces effectifs par tranches d'âge.
+Bien qu'il soit indiqué dans les variables qu'il y est une estimation de la population en 2006, ces données sont absentes du jeu de base, nous avons donc rajouté des informations démographiques provenant d'un recensement de 2008 effectué par l'INSEE et qui nous permettent de connaître le nombre total d'habitants par commune, tout en ajoutant une nouvelle dimension qui est la classification de ces effectifs par tranches d'âge, qui pourra éventuellement donner lieux à une analyse plus fine.
 
 \section{Analyse}
 
 \subsection{Considération sur les domaines d'activité}
 
- Nous allons commencer par une exploration basique des données afin de tirer des conclusions ou plutôt vérifier que nous manipulons les données correctement.
+ Nous allons commencer par une exploration basique des données afin de tirer des conclusions simpless ou plutôt vérifier que nous manipulons les données correctement en comparant les résultats obtenus avec les connaissances que nous avons sur le département.
 
-La chaîne de composant ci-dessous permet de créer un affichage de "boîtes à moustaches" pour les différents domaines d'activités, à savoir le service, le commerce, la construction et l'industrie.
+La chaîne de composants ci-dessous permet de créer un affichage de "boîtes à moustaches" pour les différents domaines d'activités, à savoir le service, le commerce, la construction et l'industrie.
 \includegraphics{png/BoxPlotDomainesActivité_knime.png}
 
-Pour calculer le pourcentage que réprésente un secteur d'activité, nous avons utlisé le composant \textit{Math Formula}, qui nous permet de faire des calculs mathématiques avec les valeurs des attributs. Dans notre cas, pour le calcul du pourcentage d'établissement de service dans une commune, il suffit de diviser le nombre d'établissements actifs de service par le nombre total d'établissements actifs.
+Pour calculer le pourcentage que réprésente un secteur d'activité, nous avons utlisé le composant \textit{Math Formula}, qui nous permet de faire des calculs mathématiques avec les valeurs des attributs. Dans notre cas, pour le calcul du pourcentage d'établissements de service dans une commune, il suffit de diviser le nombre d'établissements actifs de service par le nombre total d'établissements actifs. Nous avons fait de même pour le reste.
 
 \includegraphics[width=15cm]{png/MathFormulaEtsActifServiceRelatif.png}
 
@@ -44,7 +44,7 @@ Le workflow utilisé est le suivant:
 Le cluster obtenu est le suivant:
 \includegraphics{png/Clusters en fonction de la densité de population.png}
 
-On remarque que la densité est plus importante dans le périphérie de Lyon et Villeurbanne, avec une décroissance plus on s'éloigne. Villefranche-sur-Saône, situé sur la frontière entre l'Ain et le Rhône, se démarque part sa forte densité dûe à sa forte activité.
+On remarque ou plutôt on vérifie bien que les clusters de hautes densité sont Lyon et Villeurbanne, ainsi que leur périphérie, avec une décroissance plus on s'éloigne. Villefranche-sur-Saône, situé sur la frontière entre l'Ain et le Rhône, se démarque part sa haute densité dûe à sa forte activité. Des données sur l'Ain permettrait peut être de remarquer un autre cluster de haute densité vers cette zone.
 
 Nous avons également vérifier la stabilité de notre clusterisation en comparant simplement la taille des clusters entre les différentes intérations. C'est le moyen le plus simple pour faire une vérification, pour plus de précision, il faudrait également vérifier que ce sont bien les mêmes éléments qui composent les clusters.
 \includegraphics{png/Outil de vérification de la clusterisation en fonction de la densité de population.png}
@@ -52,4 +52,9 @@ Nous avons également vérifier la stabilité de notre clusterisation en compara
 Suivant les différentes intérations, nous obtenons bien des clusters de même taille, nous supposerons donc qu'il s'agit des mêmes.
 \includegraphics{visualisation de la stabilité de la clusterisation en fonction de la densité de population.png}
 
+\subsection{Considération sur ....}
+
+%Faudrait un cluster sur 2 ou 3 paramètres, j''ai tester avec les établissements et foyers imposés et d'autres conneries mais rien
+
 \section{Conclusion}
+
