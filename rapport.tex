@@ -25,7 +25,14 @@ La chaîne de composant ci-dessous permet de créer un affichage de "boîtes à 
 \includegraphics{png/BoxPlotDomainesActivité_knime.png}
 
 Pour calculer le pourcentage que réprésente un secteur d'activité, nous avons utlisé le composant \textit{Math Formula}, qui nous permet de faire des calculs mathématiques avec les valeurs des attributs. Dans notre cas, pour le calcul du pourcentage d'établissement de service dans une commune, il suffit de diviser le nombre d'établissements actifs de service par le nombre total d'établissements actifs.
-\includegraphics{png/MathFormulaEtsActifServiceRelatif.png}
+
+\begin{figure}[hb]
+  \centering
+  \includegraphics[width=15cm]{png/MathFormulaEtsActifServiceRelatif.png}
+  \caption[Schéma de l'architecture globale]%
+  {Schéma de l'architecture globale}
+\end{figure}
+
 
 On obtient le graphique suivant, avec les "boites à moustaches" pour les différents domaines d'activité. Cela permet de mettre en évidence que les communes du département du Rhône ont majoritairement des établissements de service, ce qui n'est pas étonnant. On remarquera que nous avons quelques valeurs exceptionnelles, notamment la commune de Riverie, qui compte 94% d'établissement de service, mais il s'agit d'une des plus petits communes du département en taille et nombre d'habitants, il faut donc relativiser l'importance de l'activité de service.
 D'ailleurs un certains nombre de communes ne comptent pas d'établissement de construction ou d'industrie, ce qui n'est guère étonnant vue la petite taille de certaines d'entre elles. Pour les établissements de commerces, la valeur 0% est mise en dehors du premier quartile, mais on ne peut malgré tout pas considérer cela comme une valeur extraordinaire.
