@@ -73,10 +73,18 @@ Suivant les différentes intérations, nous obtenons bien des clusters de même 
 	\includegraphics[width=0.9\textwidth]{png/visualisation_de_la_stabilité_de_la_clusterisation_en_fonction_de_la_densité_de_population.png}
 \end{center}
 
-%\subsection{Considération sur ....}
+\subsection{Considération sur la richesse}
+
+Nous avons aussi voulu vérifier s'il existait un lien entre le pourcentage de foyers imposés et le revenu moyen par foyer. Nous avons donc mis ces deux variables en relation dans Knime, ce qui nous a permis de nous rendre compte qu'il n'existait presque aucune corrélation entre ces valeurs :
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/pourcentage-foyers-imposable-vs-revenu.png}
+\end{center}
+
+Nous avons pu confirmer cette impression en essayant de réaliser des clusters sur ces variables, ce qui s'est avéré être là aussi un echec.
 
 %Faudrait un cluster sur 2 ou 3 paramètres, j'ai tester avec les établissements et foyers imposés et d'autres conneries mais rien
 
 \section{Conclusion}
 
-Au final, on constate que les techniques de data-mining mises à notre disposition par Knime nous permettent de d'éfficacement étudier un jeu de données initial, et aussi de pouvoir mettre en relation ces informations avec des données issues de d'autres sources. Le logiciel utilisé, Knime, est aussi un puissant outil de visualisation, permettant d'obtenir rapidement différentes vues utiles de nos données.
+Au final, on constate que les techniques de data-mining mises à notre disposition par Knime nous permettent d'éfficacement étudier un jeu de données, mais aussi de pouvoir mettre en relation ces informations avec des données issues de d'autres sources. Le logiciel utilisé, Knime, est un puissant outil de visualisation, permettant d'obtenir rapidement différentes vues utiles et exploitables de nos données.
