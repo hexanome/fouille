@@ -19,42 +19,64 @@ Bien qu'il soit indiqué dans les variables qu'il y est une estimation de la pop
 
 \subsection{Considération sur les domaines d'activité}
 
- Nous allons commencer par une exploration basique des données afin de tirer des conclusions simpless ou plutôt vérifier que nous manipulons les données correctement en comparant les résultats obtenus avec les connaissances que nous avons sur le département.
+Nous allons commencer par une exploration basique des données afin de tirer des conclusions simples ou plutôt vérifier que nous manipulons les données correctement en comparant les résultats obtenus avec les connaissances que nous avons sur le département.
 
 La chaîne de composants ci-dessous permet de créer un affichage de "boîtes à moustaches" pour les différents domaines d'activités, à savoir le service, le commerce, la construction et l'industrie.
-\includegraphics{png/BoxPlotDomainesActivité_knime.png}
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/BoxPlotDomainesActivité_knime.png}
+\end{center}
 
 Pour calculer le pourcentage que réprésente un secteur d'activité, nous avons utlisé le composant \textit{Math Formula}, qui nous permet de faire des calculs mathématiques avec les valeurs des attributs. Dans notre cas, pour le calcul du pourcentage d'établissements de service dans une commune, il suffit de diviser le nombre d'établissements actifs de service par le nombre total d'établissements actifs. Nous avons fait de même pour le reste.
 
-\includegraphics[width=15cm]{png/MathFormulaEtsActifServiceRelatif.png}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/MathFormulaEtsActifServiceRelatif.png}
+\end{center}
 
-On obtient le graphique suivant, avec les "boites à moustaches" pour les différents domaines d'activité. Cela permet de mettre en évidence que les communes du département du Rhône ont majoritairement des établissements de service, ce qui n'est pas étonnant. On remarquera que nous avons quelques valeurs exceptionnelles, notamment la commune de Riverie, qui compte 94% d'établissement de service, mais il s'agit d'une des plus petits communes du département en taille et nombre d'habitants, il faut donc relativiser l'importance de l'activité de service.
-D'ailleurs un certains nombre de communes ne comptent pas d'établissement de construction ou d'industrie, ce qui n'est guère étonnant vue la petite taille de certaines d'entre elles. Pour les établissements de commerces, la valeur 0% est mise en dehors du premier quartile, mais on ne peut malgré tout pas considérer cela comme une valeur extraordinaire.
-\includegraphics{png/BoxPlotDomainesActivité.png}
+On obtient le graphique suivant, avec les "boites à moustaches" pour les différents domaines d'activité. Cela permet de mettre en évidence que les communes du département du Rhône ont majoritairement des établissements de service, ce qui n'est pas étonnant. On remarquera que nous avons quelques valeurs exceptionnelles, notamment la commune de Riverie, qui compte 94\% d'établissement de service, mais il s'agit d'une des plus petits communes du département en taille et nombre d'habitants, il faut donc relativiser l'importance de l'activité de service.
+D'ailleurs un certains nombre de communes ne comptent pas d'établissement de construction ou d'industrie, ce qui n'est guère étonnant vue la petite taille de certaines d'entre elles. Pour les établissements de commerces, la valeur 0\% est mise en dehors du premier quartile, mais on ne peut malgré tout pas considérer cela comme une valeur extraordinaire.
 
-{subsection{Considération sur la densité de population}
-Nous allons utiliser un outil plus puissant offert par Knime afin d'analyser les données: la clusterisation grâce à  l'algorithme k-Means. Nous n'appliquerons la clusterisation que sur un seul paramètre dans ce cas.
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/BoxPlotDomainesActivité.png}
+\end{center}
+
+\subsection{Considération sur la densité de population}
+
+Nous allons utiliser un outil plus puissant offert par Knime afin d'analyser les données: la clusterisation grâce à l'algorithme k-Means. Nous n'appliquerons la clusterisation que sur un seul paramètre dans ce cas.
 
 Nous avons adjoint les coordonnées géographiques de chaque commune afin de pouvoir obtenir une réprésentation spatiale réaliste. La clusterisation n'étant pas fait sur des critéres géographiques, cela nous permet de voir si les groupements qui apparaissent se retrouve sur une carte, car la position d'une commune fait pleinement partie de son identité.
-Nous avons également ajouté un jeu de données sur la population totale (sans double compte) de chaque commune datant de 2008,car la variable POPEST06 ( Population totale estimée en 2006) est absente du jeu de données de base, celle des données datant de 1999 sont disponibles. 
+Nous avons également ajouté un jeu de données sur la population totale (sans double compte) de chaque commune datant de 2008, car la variable POPEST06 (Population totale estimée en 2006) est absente du jeu de données de base, celle des données datant de 1999 sont disponibles. 
 
 Le workflow utilisé est le suivant:
-\includegraphics{png/Clusterisation en fonction de la densité de population.png}
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/Clusterisation_en_fonction_de_la_densité_de_population.png}
+\end{center}
 
 Le cluster obtenu est le suivant:
-\includegraphics{png/Clusters en fonction de la densité de population.png}
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/Clusters_en_fonction_de_la_densité_de_population.png}
+\end{center}
 
 On remarque ou plutôt on vérifie bien que les clusters de hautes densité sont Lyon et Villeurbanne, ainsi que leur périphérie, avec une décroissance plus on s'éloigne. Villefranche-sur-Saône, situé sur la frontière entre l'Ain et le Rhône, se démarque part sa haute densité dûe à sa forte activité. Des données sur l'Ain permettrait peut être de remarquer un autre cluster de haute densité vers cette zone.
 
 Nous avons également vérifier la stabilité de notre clusterisation en comparant simplement la taille des clusters entre les différentes intérations. C'est le moyen le plus simple pour faire une vérification, pour plus de précision, il faudrait également vérifier que ce sont bien les mêmes éléments qui composent les clusters.
-\includegraphics{png/Outil de vérification de la clusterisation en fonction de la densité de population.png}
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/Outil_de_vérification_de_la_stabilité_de_la_clusterisation_en_fonction_de_la_densité_de_population.png}
+\end{center}
 
 Suivant les différentes intérations, nous obtenons bien des clusters de même taille, nous supposerons donc qu'il s'agit des mêmes.
-\includegraphics{visualisation de la stabilité de la clusterisation en fonction de la densité de population.png}
 
-\subsection{Considération sur ....}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{png/visualisation_de_la_stabilité_de_la_clusterisation_en_fonction_de_la_densité_de_population.png}
+\end{center}
 
-%Faudrait un cluster sur 2 ou 3 paramètres, j''ai tester avec les établissements et foyers imposés et d'autres conneries mais rien
+%\subsection{Considération sur ....}
+
+%Faudrait un cluster sur 2 ou 3 paramètres, j'ai tester avec les établissements et foyers imposés et d'autres conneries mais rien
 
 \section{Conclusion}
 
+Au final, on constate que les techniques de data-mining mises à notre disposition par Knime nous permettent de d'éfficacement étudier un jeu de données initial, et aussi de pouvoir mettre en relation ces informations avec des données issues de d'autres sources. Le logiciel utilisé, Knime, est aussi un puissant outil de visualisation, permettant d'obtenir rapidement différentes vues utiles de nos données.
